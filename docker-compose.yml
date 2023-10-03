@@ -1,0 +1,39 @@
+version: "3"
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 123123
+    volumes:
+      - ./mysql:/var/lib/mysql
+    networks:
+      - lemp
+  web:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/sites-available:/etc/nginx/conf.d
+      - ./www:/var/wwww
+    links:
+      - php-fpm81
+      - php-fpm74
+    networks:
+      - lemp
+  php-fpm74:
+    build: php/php-fpm/7.4
+    volumes:
+      - ./www:/var/www/
+    networks:
+      - lemp
+  php-fpm81:
+    build: php/php-fpm/8.1
+    volumes:
+      - ./www:/var/www/
+    networks:
+      - lemp
+networks:
+  lemp:
