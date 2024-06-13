@@ -1,21 +1,25 @@
-FROM phpdockerio/php:8.1-fpm
+FROM phpdockerio/php7-fpm:latest
 WORKDIR "/var/www"
 
 RUN apt-get update \
     && apt-get -y --no-install-recommends install \
     php-pear \
-    php8.1-dev \
+    php7.0-dev \
+    unixodbc \
+    unixodbc-dev \
+    build-essential \
     wget  \
     make \
     curl \
     nano \
-    php8.1-bz2 \ 
-    php8.1-gd \ 
-    php8.1-imagick \ 
-    php8.1-imap \ 
-    php8.1-ldap \ 
-    php8.1-mysql \  
-    php8.1-pgsql \
+    php7.0-bz2 \ 
+    php7.0-gd \ 
+    php7.0-imagick \ 
+    php7.0-imap \ 
+    php7.0-ldap \ 
+    php7.0-mysql \ 
+    php7.0-pgsql \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+
 

@@ -17,6 +17,7 @@ RUN apt-get update \
     php7.4-imagick \ 
     php7.4-imap \ 
     php7.4-ldap \ 
+    php7.4-pgsql \
     php7.4-mysql 
 
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
